@@ -1,0 +1,42 @@
+<!-- <app-header></app-header> -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 col-sm-12"  *ngFor="let pizza of pizzaList" id="colCard">
+            <div class="card h-100">
+                <div class="card-body">
+                    <!-- <h5 class="card-title">{{pizza.name}}</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                    <div class="row">
+                        <div class="col-2" >
+                            <label style="text-align: center;">{{pizza.name}}</label>
+                            <div *ngIf="pizza.type === 'veg'" align="center" style="padding: 0px 0px;">
+                                <i  class="fa fa-square" style="color: green;" ></i>
+                            </div>
+                            <div *ngIf="pizza.type === 'nonveg'" align="center" style="padding: 0px 0px;">                                
+                                <i  class="fa fa-square" style="color: red;" ></i>
+                            </div>
+                            <div style="padding: 1rem 0px; word-break: keep-all;">
+                                <p>&#8377;{{pizza.price}}.00</p>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <p>{{pizza.description}}</p>
+                            <p><span id="title4">Ingredients: </span>{{pizza.ingredients}}</p>
+                            <p><span id="title4">Toppings: </span>{{pizza.topping}}</p>
+                        </div>
+                        <div class="col-4" align="center">
+                            <div id="pizzaImg">
+                                <img src="{{pizza.image}}" alt="">
+                            </div>
+                            <div id="cartButton" >
+                                <button type="button" class="btn btn-warning" (click)=addPizza(pizza)>Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>

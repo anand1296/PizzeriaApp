@@ -1,0 +1,57 @@
+
+<div id="checkOutHead">
+    <h3>Your Orders for Check Out</h3>
+</div>
+
+<div id="orderTable"> 
+    <table class="table">
+        <thead>
+            <tr style="font-weight: bold;">
+                <td style="width: 10%;">No.</td>
+                <td style="width: 30%;">Item</td>   
+                <td style="width: 10%;">Price</td>
+                <td style="width: 5%;">X</td>
+                <td style="width: 5%;">Quantity</td>
+                <td style="width: 15%;">Amount</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let cartItem of cartData">
+                <td style="width: 10%;">
+                    <label>{{cartData.indexOf(cartItem) + 1}}</label>
+                </td>
+                <td style="width: 30%;">
+                <label>{{cartItem.name}}</label> 
+                    <p *ngIf="cartItem.ingredients.length > 0">({{cartItem.ingredients}})</p>
+                </td>
+                <td style="width: 10%;">
+                    <label>{{cartItem.price/cartItem.quantity}}.00</label>
+                </td>
+                <td style="width: 5%;"> </td>
+                <td style="width: 5%;">
+                    <label>{{cartItem.quantity}}</label>
+                </td>
+                <td style="width: 15%;">
+                    <label>{{cartItem.price}}.00</label>
+                </td>
+            </tr>
+            <tr style="border: 1px solid darkorange;">
+                <td colspan="5" style="font-weight: bold; font-style: italic;">Amount Payable (INR)</td>
+                <td style="font-weight: bold; color: darkorange;"> - {{totalCost}}.00</td>
+            </tr>
+        </tbody>
+        <tr style="border: 1px solid green; text-align: center;">
+            <td colspan="5" style="font-weight: bold; font-style: italic;">User Wallet Balance (INR)</td>
+            <td style="font-weight: bold; color: green;">{{currentUserWalletAmount}}.00</td>
+        </tr>
+    </table>
+    <div *ngIf="currentUserWalletAmount < totalCost && userLoggedIn!=false" align="end">
+        <button class="btn btn-secondary" disabled>Make Payment</button>
+    </div>
+    <div *ngIf="currentUserWalletAmount < totalCost" align="end">
+        <label style="color: red; font-style: italic;">*Isuffiicent wallet balance!</label>
+    </div>
+    <div *ngIf="currentUserWalletAmount >= totalCost" align="end">
+        <button class="btn btn-success" (click)="makePayment()">Make Payment</button>
+    </div>
+</div>

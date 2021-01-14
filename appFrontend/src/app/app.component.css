@@ -1,0 +1,21 @@
+
+/* for IE and Edge above version 10 */
+/* @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){
+    .block{
+        background-color: #00FF00;
+    }
+} */
+
+/* for chrome */
+/* @media screen and (-webkit-min-device-pixel-ratio:0){
+    .block{
+        background-color: #FF0000;
+    }  
+} */
+
+/* for mozilla */
+/* @-moz-document url-prefix() {
+    .block{
+        background-color: #0000FF;
+    }
+} */

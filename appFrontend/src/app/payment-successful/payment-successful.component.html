@@ -1,0 +1,20 @@
+
+<div class="container">
+    <label id="paymentLabel">Payment Successful!</label>
+    <br>
+    <label id="walletLabel">Your app wallet now contains &#8377;
+        <span>{{userAppWalletAmount}}.00</span> 
+    </label>
+    <table align="center">
+        <tbody>
+            <tr>
+                <td align="start" style="width: 30%;" (click)="goToHome()">
+                    <label id="tableLabel">Home</label>
+                </td>
+                <td align="end" style="width: 30%;" (click)="goToOrderPizza()">
+                    <label id="tableLabel">Order more!</label>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

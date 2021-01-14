@@ -1,0 +1,16 @@
+
+.cardForm{
+    margin: 10%;
+    border: 1px solid darkorange;
+    border-radius: 5px;
+}
+
+img{
+    width: 150px;
+    height: 150px;
+    padding: 20px;
+}
+
+#submitBtn{
+    padding: 10px;
+}

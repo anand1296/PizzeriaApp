@@ -1,0 +1,29 @@
+label{
+    padding: 10px;
+    font-weight: 300;
+}
+
+img{
+    width: 60px;
+    height: 60px;
+}
+
+table label{
+    font-weight: 500;
+}
+
+td{
+    padding: 3px;
+}
+
+button{
+    background-color: black;
+    color: darkorange;
+    border: 1px solid darkorange;
+    margin: 1%;
+}
+
+#condition{
+    font-size: small;
+    font-style: italic;
+}

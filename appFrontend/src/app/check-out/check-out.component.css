@@ -1,0 +1,27 @@
+#checkOutHead{
+    text-align: center;
+    color: darkorange;
+    margin-top: 5%;
+}
+
+#orderTable{
+    padding: 0% 5% 5% 5%;
+}
+
+thead, tbody{
+    text-align: center;
+}
+
+.table{
+    border: 1px solid darkorange;
+}
+
+p{
+    color: darkgray;
+    font-style: italic;
+    margin: 0px 0px 0px;
+}
+
+label{
+    margin: 0px 0px 0px;
+}

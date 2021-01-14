@@ -1,0 +1,40 @@
+.container-fluid{
+    padding: 1rem 4rem;
+    margin-bottom: 5%;
+}
+
+.card{
+    border-bottom: 2px solid black;
+    border-right: 2px solid black;
+    
+}
+
+#colCard{
+    padding: 0px 0px;
+}
+
+label{
+    word-break: keep-all;
+    margin: 0px 0px 0px;
+}
+
+img{
+    width: 150px;
+    height: 150px;
+}
+
+#cartButton{
+    text-align: center;
+    padding: 0.2rem;
+}
+button{
+    color: white;
+}
+
+p{
+    font-weight: 200;
+}
+
+#title4{
+    font-weight: bold;
+}

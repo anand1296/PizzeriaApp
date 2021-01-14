@@ -1,0 +1,141 @@
+
+<div >
+        <mat-toolbar >
+          <mat-toolbar-row >
+            <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-md>
+              <mat-icon>menu</mat-icon>
+            </button>
+            <span id="pizzeria">Pizzeria</span>
+            <!-- <span class="menu-spacer"></span> -->
+            <span routerLink='/home' *ngIf="!userLoggedIn">
+                <img src="./../../assets/PizzeriaLogo.png" id="logo">
+            </span>
+            <span routerLink='/home' *ngIf="userLoggedIn">
+              <img src="./../../assets/PizzeriaLogo.png" id="logo">
+          </span>
+            <div fxShow="true" fxHide.lt-md>
+              <!-- The following menu items will be hidden on both SM and XS screen sizes -->
+              <a routerLink='/order-pizza' mat-button>Order Pizza</a>
+              <a routerLink='/build-pizza' mat-button>Build Ur Pizza</a>
+              <a routerLink='/login' mat-button *ngIf="!userLoggedIn">User Login</a>
+              <a mat-button (click)="userLogOut()" *ngIf="userLoggedIn" class="logOutBtn">Log Out</a>
+            </div>
+            
+            <span class="menu-spacer"></span>
+            <div style="margin-right: 1%; font-size: 0.9rem; padding: 0px 1%;" (click)="goToUserProfile()" fxShow="true" fxHide.lt-sm>
+              <label style="margin: 0px 0px 0px;" >Logged in as: 
+                <span style="color: darkorange; border: 1px solid blue; border-radius: 5px; padding: 1%">{{currentUserName}}</span>
+              </label>
+              <br>
+              <label style="margin: 0px 0px 0px;">Wallet Amount: 
+                <span style="color: green;">&#8377;{{currentUserWalletAmount}}</span>
+              </label>
+            </div>
+            
+            <div fxShow="true" fxHide.lt-md>
+              <button mat-raised-button id="cartButton" 
+                matBadge={{itemCount}} matBadgePosition="before" matBadgeColor="accent" 
+                #createPlanmenuTrigger="matMenuTrigger" [matMenuTriggerFor]="createPlan" 
+                #matMenuTrigger="matMenuTrigger" (mouseenter)="matMenuTrigger.openMenu()">
+                  <mat-menu #createPlan="matMenu">
+                    <diV style="width: 250px; height: 300px; text-align: center;" (mouseleave)="matMenuTrigger.closeMenu()">
+                      <table class="table">
+                        <tbody>
+                          <div *ngIf="cartLength === 0">
+                            <label style="padding: 10%; color: darkorange; font-style: italic; border: 2px solid darkorange; border-radius: 5px;">Cart is Empty!</label>
+                          </div>
+                          <tr *ngFor="let cart of cartData">
+                            <td>
+                              <div align="start">
+                                <div>
+                                  <label style="font-weight:bold; margin: 0px 0px 0px;">{{cart.name}}</label>
+                                  <!-- <label *ngIf="!dropDownButton && cart.name === 'my custom pizza'" (click)="dropDownIngredients(cart)" style="color: darkorange;">&nbsp; > &nbsp;</label> -->
+                                  <div  *ngIf="!dropDownButton && cart.name === 'my custom pizza'" >
+                                    <mat-icon (click)="dropDownIngredients(cart)" >keyboard_arrow_down</mat-icon>
+                                  </div>
+                                  <div *ngIf="dropDownButton && cartItem === cart">
+                                    <mat-icon (click)="pullUpIngredients(cart)" >keyboard_arrow_up</mat-icon>
+                                    <label style="word-wrap: break-word;">{{cartItem.ingredients}}</label>
+                                  </div>
+                                  <div *ngIf="cart.name === 'my custom pizza'">
+                                    <button class="btn btn-danger btn-sm" (click)="removeElement(cart)">Remove</button>
+                                  </div>
+                                  <div id="quantityCounter" style="padding: 0%;" *ngIf="cart.quantity >= 1 && cart.name != 'my custom pizza'">
+                                    <label style="color: green; padding: 3.5%; font-size: 4vh; font-weight: bold;" (click)=addPizza(cart)> + </label>
+                                    <label style="padding: 5%; font-size: 2.5vh; border: 1px solid darkorange; border-radius: 15%;">{{cart.quantity}}</label>
+                                    <label style="color: red; padding: 3.5%; font-size: 4vh; font-weight: bold;" (click)="removeElement(cart)"> - </label>
+                                  </div>
+                                  <label style="color: green;">&#8377;{{cart.price}}.00</label>
+                                </div>
+                              </div>
+                            </td>
+                            <td>
+                              <div >
+                                <!-- <img src="{{cart.image}}" alt=" " style="width: 50px; height: 50px;"> -->
+                                <img src="./../../assets/PizzeriaLogo.png" alt=" " style="width: 50px; height: 50px;">
+                                
+                                <!-- <div *ngIf="cart.quantity === 1">
+                                  <button class="btn btn-danger btn-sm" (click)="removeElement(cart.name)">Remove</button>
+                                </div>
+                                <div id="quantityCounter" style="padding: 0%;" *ngIf="cart.quantity > 1">
+                                  <label style="color: green; padding: 3%; font-size: 3.5vh;"> + </label>
+                                  <label style="padding: 5%; font-size: 2.5vh; border: 1px solid darkorange; border-radius: 15%;">{{cart.quantity}}</label>
+                                  <label style="color: red; padding: 3%; font-size: 3.5vh;"> - </label>
+                                </div> -->
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td colspan="2">
+                              <div align="center">
+                                <label style="font-weight: 500; color: darkorange;">Total: &#8377;{{totalCost}}.00</label>
+                              </div>
+                              <div style="margin: 3%;">
+                                <button style="margin-right: 2%;" class="btn btn-warning" (click)="checkOut()" align="start">Check Out</button>
+                                <button style="margin-left: 2%;" class="btn btn-danger" (click)="clearCart()" align="end">Clear Cart</button>
+                              </div>
+                              <div>
+                                <button *ngIf="userLoggedIn" class="btn btn-secondary btn-block" (click)="userLogOut()">Log Out</button>
+                              </div>
+                              <!-- <div style="margin: 1%;">
+                                <button class="btn btn-danger btn-block" (click)="clearCart()">Clear Cart</button>
+                              </div>
+                              <div style="margin: 1%;">
+                                <button *ngIf="userLoggedIn" class="btn btn-secondary btn-block" (click)="userLogOut()">Log Out</button>
+                              </div> -->
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </diV>
+                  </mat-menu>
+                    <mat-icon>add_shopping_cart</mat-icon>
+                    Shopping Cart
+                </button>
+            </div>
+          </mat-toolbar-row>
+        </mat-toolbar>
+      
+        <mat-sidenav-container fxFlexFill >
+          <mat-sidenav #sidenav id="sidenav">
+            <mat-nav-list style="background-color: goldenrod">
+              <a (click)="sidenav.toggle()" href="" mat-list-item id="mat-list-item">Close</a>
+              <a routerLink='/order-pizza' mat-list-item id="mat-list-item" >Order Pizza</a>
+              <a routerLink='/build-pizza' mat-list-item id="mat-list-item" >Build Ur Pizza</a>
+              <a routerLink='/login' mat-list-item id="mat-list-item" *ngIf="!userLoggedIn">User Login</a>
+              <a routerLink='/login' mat-list-item id="mat-list-item" *ngIf="userLoggedIn">Log Out</a>
+            </mat-nav-list>
+            <!-- <button mat-raised-button id="cartButton">
+                    <mat-icon>add_shopping_cart</mat-icon>
+                    Shopping Cart
+            </button> -->
+          </mat-sidenav>
+          <mat-sidenav-content fxFlexFill>
+              <router-outlet></router-outlet>
+              <app-test-chat *ngIf="chatConnect" (respFromChat)="respReceivedFromChat($event)"></app-test-chat>
+              <app-footer></app-footer>
+          </mat-sidenav-content>
+        </mat-sidenav-container>
+        
+</div>
+      

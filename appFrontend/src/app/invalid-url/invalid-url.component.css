@@ -1,0 +1,9 @@
+.center {
+    
+    border: 3px solid red;
+    padding: 10px;
+    text-align: center;
+    top: 40%;
+    left: 40%;
+    position: fixed;
+  }

@@ -1,0 +1,38 @@
+<!-- <app-header></app-header> -->
+<div align="center" style="margin-bottom: 5%;">
+    <label>Pizzeria now gives you options to build your own pizza. Customomize your pizza by choosing ingredients from the list given below.</label>
+
+    <table class="table-bordered">
+        <tbody>
+            <tr *ngFor="let ingredient of ingredientList">
+                <td style="width: 250px;" align="center">
+                    <img src="{{ingredient.image}}" alt="">
+                </td>
+                <td style="width: 200px;">
+                    <div align="center">
+                        <label >{{ingredient.tname}}</label>
+                        <label >&#8377;{{ingredient.price}}.00</label>
+                    </div>
+                </td>
+                <td style="width: 150px;">
+                    <div class="checkbox">
+                        <label style="color: darkorange;"><input type="checkbox" value="" (change)="onCheckIngredient(ingredient, ingredient.price, $event.target.checked)">&nbsp; Add</label> 
+                    </div>
+                </td>
+            </tr>
+            <tr rowspan="3">
+                <td colspan="3">
+                    <div>
+                        <label id="condition">*The pizza includes a cost of &#8377; {{basePrice}} for the base!</label>
+                    </div>
+                    <div>
+                        <label style="color: navy;">Total cost : {{basePrice}} + {{totalCost}} = {{basePrice + totalCost}}</label>
+                    </div>
+                    <div align="center">
+                        <button type="button" class="btn" (click)="buildPizza()">Build Ur Pizza</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

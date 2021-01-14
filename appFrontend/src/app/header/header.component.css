@@ -1,0 +1,46 @@
+mat-toolbar{
+    background-color: black;
+    color: gainsboro;
+    width: 100%;
+}
+
+.menu-spacer {
+    flex: 1 1 auto;
+  }
+
+#pizzeria{
+    letter-spacing: 0.1em;
+    font-size: 5vh;
+    padding: 3px;
+}
+
+#logo{
+    height: 3.5rem;
+    padding: 2px;
+}
+
+#cartButton{
+    background-color: rgb(230, 211, 49);
+}
+
+#sidenav{
+    background-color: black;
+    color: white;
+}
+
+#mat-list-item{
+    color: white;
+}
+
+a{
+    font-size: 2.6vh;
+    margin-left: 5%;
+}
+
+.logOutBtn:hover{
+    color: royalblue;
+}
+
+mat-icon{
+    color: darkorange;
+}

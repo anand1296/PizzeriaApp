@@ -1,0 +1,23 @@
+.container {
+    
+    padding: 5%;
+    text-align: center;
+    top: 35%;
+    left: 5%;
+    position: fixed;
+  }
+
+  #paymentLabel{
+      color: green;
+      font-weight: 700;
+      font-size: 200%;
+  }
+
+  span{
+      color: green;
+  }
+
+#tableLabel{
+    text-decoration: underline;
+    color: darkorange;
+}

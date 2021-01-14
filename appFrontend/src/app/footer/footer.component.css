@@ -1,0 +1,9 @@
+#footerDiv{
+    color: gold;
+    text-align: center;
+    background-color: ivory;
+    width: 100%;
+    bottom: 0%;
+    position: fixed;
+    padding: 5px;
+}

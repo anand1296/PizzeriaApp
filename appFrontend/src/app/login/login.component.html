@@ -1,0 +1,83 @@
+<!-- <app-header></app-header> -->
+<div align="center">
+    <div style="margin-top: 3%;">
+        <h3> - User Login - </h3>
+    </div>
+
+    <!-- 4 ways to toggle css change on a condition -->
+
+    <!-- 1 -->
+    <!-- <div *ngIf="alert">
+        <label style="color: red">{{msg}}</label>
+    </div>
+    <div *ngIf="!alert">
+        <label style="color: green">{{msg}}</label>
+    </div> -->
+    <!-- 1 -->
+
+    <!-- 2 -->
+    <!-- <div [style.color]="alert ? 'red' : 'green'">
+        <label >{{msg}}</label>
+    </div> -->
+    <!-- 2 -->
+
+    <!-- 3 (check ts)--> 
+    <!-- <div [ngStyle]="currentStyle">
+        <label >{{msg}}</label>
+    </div> -->
+    <!-- 3 -->
+
+    <!-- 4 (check scss)-->
+    <div [ngClass]="{'example-class': alert, 'other-class': !alert}">{{msg}}</div>
+    <!-- 4 -->
+
+    <div class="cardForm">
+        <form [formGroup]="userLoginForm" class="form-group" (ngSubmit)="submitLoginForm()">
+            <!-- Username: <input type="text" formControlName="userName" class="form-control">
+            Password: <input type="password" formControlName="password" class="form-control">
+            Phone Number: <input type="tel" formControlName="phoneNumber" class="form-control"> -->
+
+            <table class="table-borderless"> 
+                <tbody>
+                    <tr>
+                        <td colspan="2">
+                            <div align="center">
+                                <img src="./../../assets/200-2008697_account-customer-login-man-user-icon-login-icon.png" alt="">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Username: </label>
+                        </td>               
+                        <td>
+                            <input type="text" formControlName="userName" class="form-control">    
+                        </td>         
+                    </tr>                    
+                    <tr>
+                        <td>
+                            <label>Password:</label>
+                        </td>
+                        <td>
+                            <input type="password" formControlName="password" class="form-control">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div align="end">
+                                <label style="color: dodgerblue;" routerLink='/register'>New user? Register here!</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="center">
+                            <div id="submitBtn">
+                                <input type="submit" class="btn-primary btn-block" value="Login" >
+                            </div>                    
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>
